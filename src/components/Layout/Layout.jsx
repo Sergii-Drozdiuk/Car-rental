@@ -1,18 +1,20 @@
-import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { AppBar } from '../AppBar/AppBar';
+import { Outlet } from 'react-router-dom';
+
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import { Loader } from '../Loader/Loader';
 
 export const Layout = () => {
   return (
     <>
-      <header>
-        <AppBar />
-      </header>
-      <main>
-        <Suspense fallback={<div>Loading...</div>}>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <main>
           <Outlet />
-        </Suspense>
-      </main>
+        </main>
+      </Suspense>
+      <Footer />
     </>
   );
 };
